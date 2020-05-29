@@ -1,3 +1,18 @@
+# FriendsBackend
+
+# Dotnet command Line
+
+- [x] dotnet --info
+- [x] dotnet -h
+- [x] dotnet run --project .\Friends.API\
+
+### migrations
+
+- [x] dotnet ef migrations add initialCreate => create migration
+- [x] dotnet ef database update => Create and update the database based on last migrations.
+
+> Note: Anytime any thing change to the entity model we need to add migration and to update database you have to run the update database command.
+
 # FriendsClient
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.1.6.
