@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Friends.API.Data;
+using Friends.API.Repositories;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Cors.Infrastructure;
 using Microsoft.AspNetCore.Hosting;
@@ -32,7 +33,6 @@ namespace Friends.API
             // Add DBContext 
             services.AddDbContext<DataContext>(x => x.UseSqlite(Configuration.GetConnectionString("DefaultConnection")));
             services.AddControllers();
-            // Cors
             services.AddCors(x =>
             {
                 x.AddPolicy(AllowSpecifiOrigins, bilder =>
@@ -42,6 +42,9 @@ namespace Friends.API
                         .WithMethods("GET", "POST", "PUT", "PATCH", "DELETE");
                 });
             });
+            // Inject the repository.
+            // AddScoped: It creates one instance for per http request.
+            services.AddScoped<IAuthRepository, AuthRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
