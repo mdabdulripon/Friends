@@ -6,21 +6,18 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ValueComponent } from './value/value.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatModule } from './shared/mat/mat.module';
 
 @NgModule({
-	declarations: [
-		AppComponent,
-		ValueComponent
-	],
+	declarations: [AppComponent, ValueComponent],
 	imports: [
 		BrowserModule,
 		HttpClientModule,
 		AppRoutingModule,
-		BrowserAnimationsModule
+		BrowserAnimationsModule,
+		MatModule,
 	],
 	providers: [],
-	bootstrap: [
-		AppComponent
-	]
+	bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
