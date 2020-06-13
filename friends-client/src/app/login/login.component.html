@@ -1,0 +1,38 @@
+<mat-card class="auth-form">
+	<mat-card-title class="auth-form-title">Login</mat-card-title>
+	<mat-card-content>
+		<form #loginForm="ngForm" (submit)="login()">
+			<mat-form-field>
+				<input
+					type="text"
+					matInput
+					placeholder="Username"
+					name="username"
+					required
+					[(ngModel)]="model.username"
+				/>
+			</mat-form-field>
+			<mat-form-field>
+				<input
+					type="password"
+					matInput
+					placeholder="Password"
+					name="password"
+					required
+					[(ngModel)]="model.password"
+				/>
+			</mat-form-field>
+			<!-- <p *ngIf="error" class="error">{{ error }}</p> -->
+			<div class="button">
+				<button
+					mat-stroked-button
+					color="primary"
+					[disabled]="!loginForm.valid"
+					type="submit"
+				>
+					Login
+				</button>
+			</div>
+		</form>
+	</mat-card-content>
+</mat-card>

@@ -1,0 +1,26 @@
+.auth-form {
+	display: flex;
+	justify-content: center;
+	max-width: 450px;
+	margin: 100px auto;
+	&-title,
+	&-content {
+		display: flex;
+		justify-content: center;
+	}
+	.mat-form-field {
+		width: 100%;
+		min-width: 300px;
+	}
+
+	.error {
+		padding: 16px;
+		width: 300px;
+		color: red;
+	}
+
+	.button {
+		display: flex;
+		justify-content: flex-start;
+	}
+}

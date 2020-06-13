@@ -1,0 +1,39 @@
+<header class="navbar-header">
+	<a class="logo" [routerLink]="['/']">Friends</a>
+	<nav>
+		<ul class="nav__links">
+			<li><a href="#">Services</a></li>
+			<li><a href="#">Projects</a></li>
+			<li><a href="#">About</a></li>
+			<li *ngIf="!loggedIn()"><a [routerLink]="['login']">Login</a></li>
+		</ul>
+	</nav>
+	<button class="menu cta" (click)="openNav()" mat-button>Menu</button>
+
+	<button
+		*ngIf="loggedIn()"
+		class="cta"
+		mat-button
+		[matMenuTriggerFor]="accounts"
+	>
+		Accounts <span class="material-icons">keyboard_arrow_down</span>
+	</button>
+	<mat-menu #accounts="matMenu" xPosition="before">
+		<button mat-menu-item>Button one</button>
+		<button mat-menu-item>Button two</button>
+		<button mat-menu-item>And many more buttons</button>
+		<button mat-menu-item class="icon-text" (click)="logout()">
+			<span class="material-icons">power_settings_new</span>
+			<span class="text">Logout</span>
+		</button>
+	</mat-menu>
+</header>
+
+<div class="overlay {{ isNavOpen ? 'full-width' : 'zero-width' }}">
+	<a class="close" (click)="closeNav()">&times;</a>
+	<div class="overlay__content">
+		<a href="#">Services</a>
+		<a href="#">Projects</a>
+		<a href="#">About</a>
+	</div>
+</div>
