@@ -33,7 +33,7 @@ namespace Friends.API.Controllers
         {
             // Validate request 
 
-            // Lowercase the username 
+            // Lowercase the User name 
             userForRegister.Username = userForRegister.Username.ToLower();
 
             // Check if the user already exits.
@@ -54,6 +54,7 @@ namespace Friends.API.Controllers
         [HttpPost("Login")]
         public async Task<IActionResult> Login(UserForLogin userForLogin)
         {
+            throw new Exception("Something went wrong!");
             // check if user is exits 
             var user = await _repo.Login(userForLogin.Username.ToLower(), userForLogin.Password);
             if (user == null)
@@ -61,7 +62,7 @@ namespace Friends.API.Controllers
                 return Unauthorized();
             }
 
-            // token will contains two claims one is user id and another one is username
+            // token will contains two claims one is user id and another one is User name
             var claim = new[]
             {
                 new Claim(ClaimTypes.NameIdentifier, user.Id.ToString()),
