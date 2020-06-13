@@ -28,28 +28,29 @@ namespace Friends.API
         }
 
         public IConfiguration Configuration { get; }
-        public string AllowSpecifiOrigins = "_allowSpecifiOrigins";
+        //public string AllowSpecifiOrigins = "_allowSpecifiOrigins";
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
             // Add DBContext 
             services.AddDbContext<DataContext>(x => x.UseSqlite(Configuration.GetConnectionString("DefaultConnection")));
+            //services.AddCors(x =>
+            //{
+            //    x.AddPolicy(AllowSpecifiOrigins, builder =>
+            //    {
+            //        builder
+            //            .WithOrigins("http://localhost:4200", "http://localhost:4100")
+            //            .WithMethods("GET", "POST", "PUT", "PATCH", "DELETE");
+            //    });
+            //});
+            services.AddCors();
             services.AddControllers();
-            services.AddCors(x =>
-            {
-                x.AddPolicy(AllowSpecifiOrigins, bilder =>
-                {
-                    bilder
-                        .WithOrigins("http://localhost:4200", "http://localhost:4100")
-                        .WithMethods("GET", "POST", "PUT", "PATCH", "DELETE");
-                });
-            });
             // Inject the repository.
-            // AddScoped: It creates one instance for per http request.
+            // AddScoped: It creates one instance for per HTTP request.
             services.AddScoped<IAuthRepository, AuthRepository>();
 
-            // Authenticate middleware
+            // Authenticate
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
                 .AddJwtBearer(options =>
                 {
@@ -70,12 +71,13 @@ namespace Friends.API
             {
                 app.UseDeveloperExceptionPage();
             }
-            app.UseCors(AllowSpecifiOrigins);
+            app.UseRouting();
+
+            app.UseCors(x => x.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
+
             app.UseAuthentication();
 
             //app.UseHttpsRedirection();
-
-            app.UseRouting();
 
             app.UseAuthorization();
 
