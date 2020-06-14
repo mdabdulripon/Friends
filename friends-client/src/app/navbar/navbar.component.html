@@ -10,14 +10,11 @@
 	</nav>
 	<button class="menu cta" (click)="openNav()" mat-button>Menu</button>
 
-	<button
-		*ngIf="loggedIn()"
-		class="cta"
-		mat-button
-		[matMenuTriggerFor]="accounts"
-	>
-		Accounts <span class="material-icons">keyboard_arrow_down</span>
+	<button *ngIf="loggedIn()" class="cta" mat-button [matMenuTriggerFor]="accounts">
+		{{ userName | titlecase }}
+		<span class="material-icons">keyboard_arrow_down</span>
 	</button>
+
 	<mat-menu #accounts="matMenu" xPosition="before">
 		<button mat-menu-item>Button one</button>
 		<button mat-menu-item>Button two</button>
@@ -27,6 +24,7 @@
 			<span class="text">Logout</span>
 		</button>
 	</mat-menu>
+
 </header>
 
 <div class="overlay {{ isNavOpen ? 'full-width' : 'zero-width' }}">
