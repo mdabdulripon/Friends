@@ -1,0 +1,29 @@
+.page-title {
+	padding-bottom: 20px;
+}
+
+.fixed-container {
+	max-width: 1170px;
+	margin: auto;
+	display: flex;
+	flex-direction: column;
+	border: 1px solid $white;
+}
+
+.center-align {
+	align-items: center;
+}
+
+.right-align {
+	align-items: right;
+}
+
+.left-align {
+	align-items: left;
+}
+
+.icon-text {
+	display: flex;
+	align-items: center;
+	justify-content: flex-start;
+}
