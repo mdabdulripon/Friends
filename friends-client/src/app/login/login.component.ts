@@ -9,18 +9,18 @@ import { AuthService } from '../_services/auth.service';
 export class LoginComponent implements OnInit {
 	model: any = {};
 
-	constructor(private _auth: AuthService) {}
+	constructor(private _auth: AuthService) { }
 
-	ngOnInit(): void {}
+	ngOnInit(): void { }
 
 	login() {
 		console.log(this.model);
 		this._auth.login(this.model).subscribe(
 			(res) => {
-				console.log('LoginComponent -> login -> res', res);
+				console.log('res', res);
 			},
 			(error) => {
-				console.log('LoginComponent -> login -> error', error);
+				console.log('error', error);
 			}
 		);
 	}
@@ -32,6 +32,5 @@ export class LoginComponent implements OnInit {
 
 	logout() {
 		localStorage.removeItem('token');
-		console.log('logout');
 	}
 }

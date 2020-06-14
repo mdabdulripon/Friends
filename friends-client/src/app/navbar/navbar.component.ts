@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from '../_services/auth.service';
+import { JwtHelperService } from "@auth0/angular-jwt";
 
 @Component({
 	selector: 'app-navbar',
@@ -7,9 +9,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NavbarComponent implements OnInit {
 	public isNavOpen: boolean = false;
-	constructor() {}
+	userName: string = 'account';
+	helper = new JwtHelperService();
 
-	ngOnInit() {}
+
+	constructor(private _auth: AuthService) { }
+
+	ngOnInit() {
+		const token = localStorage.getItem('token');
+		if (token) {
+			this._auth.decodedToken = this.helper.decodeToken(token);
+			this.userName = this._auth.decodedToken.unique_name;
+		}
+	}
 
 	openNav() {
 		this.isNavOpen = true;
@@ -20,12 +32,10 @@ export class NavbarComponent implements OnInit {
 	}
 
 	loggedIn() {
-		const token = localStorage.getItem('token');
-		return !!token;
+		return this._auth.isLoggedIn();
 	}
 
 	logout() {
 		localStorage.removeItem('token');
-		console.log('logout');
 	}
 }
