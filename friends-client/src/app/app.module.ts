@@ -15,6 +15,7 @@ import { LoginComponent } from './login/login.component';
 import { AuthService } from './_services/auth.service';
 import { RegisterComponent } from './register/register.component';
 import { RouterModule } from '@angular/router';
+import { ErrorInterceptorProvider } from './_services/error.interceptor';
 
 @NgModule({
 	declarations: [
@@ -34,7 +35,10 @@ import { RouterModule } from '@angular/router';
 		BrowserAnimationsModule,
 		MatModule,
 	],
-	providers: [AuthService],
+	providers: [
+		AuthService,
+		ErrorInterceptorProvider
+	],
 	bootstrap: [AppComponent],
 })
-export class AppModule {}
+export class AppModule { }

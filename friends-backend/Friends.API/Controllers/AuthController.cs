@@ -54,7 +54,7 @@ namespace Friends.API.Controllers
         [HttpPost("Login")]
         public async Task<IActionResult> Login(UserForLogin userForLogin)
         {
-            throw new Exception("Something went wrong!");
+            // throw new Exception("Something went wrong!");
             // check if user is exits 
             var user = await _repo.Login(userForLogin.Username.ToLower(), userForLogin.Password);
             if (user == null)
