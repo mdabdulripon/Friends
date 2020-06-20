@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../_services/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
 	selector: 'app-login',
@@ -9,18 +10,22 @@ import { AuthService } from '../_services/auth.service';
 export class LoginComponent implements OnInit {
 	model: any = {};
 
-	constructor(private _auth: AuthService) { }
+	constructor(private _auth: AuthService, private _router: Router) { }
 
 	ngOnInit(): void { }
 
 	login() {
-		console.log(this.model);
 		this._auth.login(this.model).subscribe(
 			(res) => {
+				// TODO:  Add toster alert and remove the console.
 				console.log('res', res);
 			},
 			(error) => {
+				// TODO:  Add toster alert and remove the console.
 				console.log('error', error);
+			},
+			() => {
+				this._router.navigate(['members'])
 			}
 		);
 	}

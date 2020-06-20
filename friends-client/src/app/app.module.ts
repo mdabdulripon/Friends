@@ -12,10 +12,12 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { FooterComponent } from './footer/footer.component';
 import { LoginComponent } from './login/login.component';
 
-import { AuthService } from './_services/auth.service';
 import { RegisterComponent } from './register/register.component';
 import { RouterModule } from '@angular/router';
 import { ErrorInterceptorProvider } from './_services/error.interceptor';
+import { ListsComponent } from './lists/lists.component';
+import { MemberListComponent } from './member-list/member-list.component';
+import { MessagesComponent } from './messages/messages.component';
 
 @NgModule({
 	declarations: [
@@ -25,6 +27,9 @@ import { ErrorInterceptorProvider } from './_services/error.interceptor';
 		FooterComponent,
 		LoginComponent,
 		RegisterComponent,
+		ListsComponent,
+		MemberListComponent,
+		MessagesComponent,
 	],
 	imports: [
 		BrowserModule,
@@ -36,7 +41,6 @@ import { ErrorInterceptorProvider } from './_services/error.interceptor';
 		MatModule,
 	],
 	providers: [
-		AuthService,
 		ErrorInterceptorProvider
 	],
 	bootstrap: [AppComponent],
