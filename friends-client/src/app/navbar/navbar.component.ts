@@ -10,9 +10,8 @@ import { Router } from '@angular/router';
 })
 export class NavbarComponent implements OnInit {
 	public isNavOpen: boolean = false;
-	userName: string = 'account';
+	userEmail: string = 'account';
 	helper = new JwtHelperService();
-
 
 	constructor(private _auth: AuthService, private _router: Router) { }
 
@@ -20,7 +19,7 @@ export class NavbarComponent implements OnInit {
 		const token = localStorage.getItem('token');
 		if (token) {
 			this._auth.decodedToken = this.helper.decodeToken(token);
-			this.userName = this._auth.decodedToken.unique_name;
+			this.userEmail = this._auth.decodedToken.email;
 		}
 	}
 

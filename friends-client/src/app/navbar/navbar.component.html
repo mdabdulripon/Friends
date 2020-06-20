@@ -11,7 +11,7 @@
 	<button class="menu cta" (click)="openNav()" mat-button>Menu</button>
 
 	<button *ngIf="loggedIn()" class="cta" mat-button [matMenuTriggerFor]="accounts">
-		{{ userName | titlecase }}
+		{{ userEmail | titlecase }}
 		<span class="material-icons">keyboard_arrow_down</span>
 	</button>
 

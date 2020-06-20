@@ -4,12 +4,12 @@
 		<form #loginForm="ngForm" (submit)="login()">
 			<mat-form-field>
 				<input
-					type="text"
+					type="email"
 					matInput
-					placeholder="Username"
-					name="username"
+					placeholder="Email"
+					name="email"
 					required
-					[(ngModel)]="model.username"
+					[(ngModel)]="model.email"
 				/>
 			</mat-form-field>
 			<mat-form-field>
