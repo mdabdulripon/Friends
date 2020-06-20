@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../_services/auth.service';
 import { JwtHelperService } from "@auth0/angular-jwt";
+import { Router } from '@angular/router';
 
 @Component({
 	selector: 'app-navbar',
@@ -13,7 +14,7 @@ export class NavbarComponent implements OnInit {
 	helper = new JwtHelperService();
 
 
-	constructor(private _auth: AuthService) { }
+	constructor(private _auth: AuthService, private _router: Router) { }
 
 	ngOnInit() {
 		const token = localStorage.getItem('token');
@@ -37,5 +38,6 @@ export class NavbarComponent implements OnInit {
 
 	logout() {
 		localStorage.removeItem('token');
+		this._router.navigate(['/']);
 	}
 }
