@@ -34,16 +34,16 @@ namespace Friends.API.Controllers
             // Validate request 
 
             // Lowercase the User name 
-            userForRegister.Username = userForRegister.Username.ToLower();
+            userForRegister.Email = userForRegister.Email.ToLower();
 
             // Check if the user already exits.
-            if (await _repo.UserExits(userForRegister.Username))
+            if (await _repo.UserExits(userForRegister.Email))
             {
                 return BadRequest("User Name already exits.");
             }
             var user = new User
             {
-                Username = userForRegister.Username
+                Email = userForRegister.Email
             };
 
             await _repo.Register(user, userForRegister.Password);
@@ -56,7 +56,7 @@ namespace Friends.API.Controllers
         {
             // throw new Exception("Something went wrong!");
             // check if user is exits 
-            var user = await _repo.Login(userForLogin.Username.ToLower(), userForLogin.Password);
+            var user = await _repo.Login(userForLogin.Email.ToLower(), userForLogin.Password);
             if (user == null)
             {
                 return Unauthorized();
@@ -66,7 +66,7 @@ namespace Friends.API.Controllers
             var claim = new[]
             {
                 new Claim(ClaimTypes.NameIdentifier, user.Id.ToString()),
-                new Claim(ClaimTypes.Name, user.Username)
+                new Claim(ClaimTypes.Email, user.Email)
             };
 
             // Creating a security key 

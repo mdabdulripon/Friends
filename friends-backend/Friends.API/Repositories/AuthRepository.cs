@@ -17,10 +17,10 @@ namespace Friends.API.Repositories
             _context = context;
         }
 
-        public async Task<User> Login(string username, string password)
+        public async Task<User> Login(string email, string password)
         {
             // check if the user is exit 
-            var user = await _context.Users.FirstOrDefaultAsync(x => x.Username == username);
+            var user = await _context.Users.FirstOrDefaultAsync(x => x.Email == email);
 
             if (user == null)
             {
@@ -78,10 +78,10 @@ namespace Friends.API.Repositories
             }
         }
 
-        public async Task<bool> UserExits(string username)
+        public async Task<bool> UserExits(string email)
         {
 
-            if (await _context.Users.AnyAsync(x => x.Username == username))
+            if (await _context.Users.AnyAsync(x => x.Email == email))
             {
                 return true;
             }

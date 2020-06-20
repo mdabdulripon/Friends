@@ -9,8 +9,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Friends.API.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20200529025907_AddUserEntity")]
-    partial class AddUserEntity
+    [Migration("20200620151204_InitialMigration")]
+    partial class InitialMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -24,14 +24,14 @@ namespace Friends.API.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
+                    b.Property<string>("Email")
+                        .HasColumnType("TEXT");
+
                     b.Property<byte[]>("PasswordHash")
                         .HasColumnType("BLOB");
 
                     b.Property<byte[]>("PasswordSalt")
                         .HasColumnType("BLOB");
-
-                    b.Property<string>("Username")
-                        .HasColumnType("TEXT");
 
                     b.HasKey("Id");
 

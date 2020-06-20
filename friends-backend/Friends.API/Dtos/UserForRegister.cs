@@ -9,10 +9,10 @@ namespace Friends.API.Dtos
     public class UserForRegister
     {
         [Required]
-        //[EmailAddress]
-        public string Username { get; set; }
+        [EmailAddress]
+        public string Email { get; set; }
         [Required]
-        [StringLength(8, MinimumLength = 4, ErrorMessage = "Password must be between 4 to 8 characters")]
+        [StringLength(32, MinimumLength = 8, ErrorMessage = "Password must be between 4 to 32 characters")]
         public string Password { get; set; }
     }
 }
