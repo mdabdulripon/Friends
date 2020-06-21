@@ -10,6 +10,8 @@ namespace Friends.API.Models
         public DateTime AddedDate { get; set; }
         public bool IsMain { get; set; }
         // if we add this following information we can have cascade delete instance of restricted delete
+        // cascade delete: if user is delete then the photos will be delete 
+        // restricted delete: Even though the user is deleted but picture won't be delete. 
         public User user { get; set; }
         public int UserId { get; set; }
     }
