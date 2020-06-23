@@ -41,7 +41,10 @@ namespace Friends.API
             //    });
             //});
             services.AddCors();
-            services.AddControllers();
+            services.AddControllers().AddNewtonsoftJson(opt =>
+           {
+               opt.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore;
+           });
             // Inject the repository.
             // AddScoped: It creates one instance for per HTTP request.
             services.AddScoped<IAuthRepository, AuthRepository>();
