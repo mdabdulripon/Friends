@@ -1,5 +1,6 @@
 using System.Net;
 using System.Text;
+using AutoMapper;
 using Friends.API.Data;
 using Friends.API.Helpers;
 using Friends.API.Repositories;
@@ -45,6 +46,7 @@ namespace Friends.API
            {
                opt.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore;
            });
+            services.AddAutoMapper(typeof(UserRepository).Assembly);
             // Inject the repository.
             // AddScoped: It creates one instance for per HTTP request.
             services.AddScoped<IAuthRepository, AuthRepository>();
