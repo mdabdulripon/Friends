@@ -1,9 +1,5 @@
 ﻿using Friends.API.Models;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace Friends.API.Data
 {
@@ -13,5 +9,6 @@ namespace Friends.API.Data
 
         public DbSet<Value> Values { get; set; }
         public DbSet<User> Users { get; set; }
+        public DbSet<Photo> Photos { get; set; }
     }
 }
