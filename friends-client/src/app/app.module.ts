@@ -16,8 +16,9 @@ import { RegisterComponent } from './register/register.component';
 import { RouterModule } from '@angular/router';
 import { ErrorInterceptorProvider } from './_services/error.interceptor';
 import { ListsComponent } from './lists/lists.component';
-import { MemberListComponent } from './member-list/member-list.component';
+import { MemberListComponent } from './members/member-list/member-list.component';
 import { MessagesComponent } from './messages/messages.component';
+import { MemberCardComponent } from './members/member-card/member-card.component';
 
 @NgModule({
 	declarations: [
@@ -30,6 +31,7 @@ import { MessagesComponent } from './messages/messages.component';
 		ListsComponent,
 		MemberListComponent,
 		MessagesComponent,
+		MemberCardComponent,
 	],
 	imports: [
 		BrowserModule,

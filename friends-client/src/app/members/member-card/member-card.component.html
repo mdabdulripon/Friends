@@ -1,0 +1,12 @@
+<div class="card">
+    <div class="card__image" [ngStyle]="{background: 'url(' +  user.photoUrl + ')'}"></div>
+    <div class="card__content">
+        <div class="card__title">{{ user.firstName }} - {{ user.age }}</div>
+        <p class="card__text"> {{ user.city }}, {{ user.country }} </p>
+        <div class="group-btn">
+            <button class="group-btn__round" type="button"><span class="material-icons">account_circle</span></button>
+            <button class="group-btn__round" type="button"><span class="material-icons">favorite_border</span></button>
+            <button class="group-btn__round" type="button"><span class="material-icons">mail</span></button>
+        </div>
+    </div>
+</div>
