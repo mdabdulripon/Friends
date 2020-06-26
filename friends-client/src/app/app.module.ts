@@ -5,6 +5,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatModule } from './shared/mat/mat.module';
 import { FormsModule } from '@angular/forms';
+import { JwtModule } from '@auth0/angular-jwt';
+
 
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
@@ -19,6 +21,10 @@ import { ListsComponent } from './lists/lists.component';
 import { MemberListComponent } from './members/member-list/member-list.component';
 import { MessagesComponent } from './messages/messages.component';
 import { MemberCardComponent } from './members/member-card/member-card.component';
+
+export function tokenGetter() {
+	return localStorage.getItem('token');
+}
 
 @NgModule({
 	declarations: [
@@ -41,6 +47,13 @@ import { MemberCardComponent } from './members/member-card/member-card.component
 		FormsModule,
 		BrowserAnimationsModule,
 		MatModule,
+		JwtModule.forRoot({
+			config: {
+				tokenGetter: tokenGetter,
+				whitelistedDomains: ["localhost:5000"],
+				blacklistedRoutes: ["localhost:5000/api/auth"],
+			},
+		}),
 	],
 	providers: [
 		ErrorInterceptorProvider
