@@ -1,0 +1,37 @@
+<div class="fixed-container">
+    <div class="column">
+        <div class="column_item left-column">
+            <img class="image" src="{{ user.photoUrl }}" alt="{{user.firstName}}">
+            <div class="column_item--content">
+                <p>Name: {{ user.firstName | titlecase }}, {{ user.lastName | titlecase }}</p>
+                <p>Age: {{ user.age }}</p>
+                <p>Location: {{ user.city }}, {{user.country }}</p>
+                <p>Last active: {{ user.lastActive }}</p>
+                <p>Member since: {{ user.created }}</p>
+            </div>
+            <div class="group-btn">
+                <button class="group-btn__round" type="button"><span
+                        class="material-icons">favorite_border</span></button>
+                <button class="group-btn__round" type="button"><span class="material-icons">mail</span></button>
+            </div>
+        </div>
+
+        <div class="column_item right-column">
+            <mat-tab-group animationDuration="0ms">
+                <mat-tab label="About {{user.firstName }}">
+                    <h1>Description</h1>
+                    <p>{{user.introduction }}</p>
+
+                    <h1>Looking For</h1>
+                    <p>{{user.lookingFor}}</p>
+                </mat-tab>
+                <mat-tab label="Interest">
+                    <h1>Interests</h1>
+                    <p>{{user.interests}}</p>
+                </mat-tab>
+                <mat-tab label="Photos">Photos</mat-tab>
+                <mat-tab label="Messages">Messages</mat-tab>
+            </mat-tab-group>
+        </div>
+    </div>
+</div>

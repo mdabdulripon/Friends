@@ -1,13 +1,17 @@
-.page-title {
-	padding-bottom: 20px;
-}
-
 .fixed-container {
 	max-width: 1170px;
 	margin: auto;
 	display: flex;
 	flex-direction: column;
 	border: 1px solid $white;
+}
+
+.page-wrapper {
+	margin: 16px;
+}
+
+.page-title {
+	padding-bottom: 20px;
 }
 
 .center-align {
