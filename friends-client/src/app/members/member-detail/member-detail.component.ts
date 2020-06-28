@@ -18,20 +18,9 @@ export class MemberDetailComponent implements OnInit {
 		private _route: ActivatedRoute) { }
 
 	ngOnInit(): void {
-		// get id from router params
-		const id = +this._route.snapshot.params.id;
-		console.log("MemberDetailComponent -> ngOnInit -> id", id);
-		this.loadUser(id);
-	}
-
-	loadUser(id: number) {
-		this._user.getUser(id).subscribe(res => {
-			this.user = res;
-			console.log("-> res", res);
-		}, (error) => {
-			console.log("-> error", error);
-		}, () => {
-			console.log("Load the single profile.");
-		});
+		// get data from resolver 
+		this._route.data.subscribe(res => {
+			this.user = res.user;
+		})
 	}
 }

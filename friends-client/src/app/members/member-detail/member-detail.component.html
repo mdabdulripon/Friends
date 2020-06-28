@@ -3,7 +3,7 @@
         <div class="column_item left-column">
             <img class="image" src="{{ user.photoUrl }}" alt="{{user.firstName}}">
             <div class="column_item--content">
-                <p>Name: {{ user.firstName | titlecase }}, {{ user.lastName | titlecase }}</p>
+                <p>Name: {{ user.knownAs }}</p>
                 <p>Age: {{ user.age }}</p>
                 <p>Location: {{ user.city }}, {{user.country }}</p>
                 <p>Last active: {{ user.lastActive }}</p>
