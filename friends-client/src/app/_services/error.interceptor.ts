@@ -24,14 +24,12 @@ export class ErrorInterceptor implements HttpInterceptor {
 				if (error.status === 401) {
 					return throwError(error.statusText);
 				}
-
 				if (error instanceof HttpErrorResponse) {
 					const applicationError = error.headers.get('Application-Error');
 					if (applicationError) {
 						return throwError(applicationError);
 					}
 					const validationError = error.error;
-					console.log('***********************', error);
 					let modalStateErrors = '';
 					if (validationError.errors && typeof validationError.errors === 'object') {
 						for (let key in validationError.errors) {
