@@ -24,6 +24,7 @@ import { MemberCardComponent } from './members/member-card/member-card.component
 import { MemberDetailComponent } from './members/member-detail/member-detail.component';
 import { MemberDetailResolver } from './_resolvers/member-detail.resolver';
 import { MemberListResolver } from './_resolvers/member-list.resolver';
+import { CarouselComponent } from './shared/carousel/carousel.component';
 
 export function tokenGetter() {
 	return localStorage.getItem('token');
@@ -42,6 +43,7 @@ export function tokenGetter() {
 		MessagesComponent,
 		MemberCardComponent,
 		MemberDetailComponent,
+		CarouselComponent,
 	],
 	imports: [
 		BrowserModule,

@@ -21,6 +21,22 @@ export class MemberDetailComponent implements OnInit {
 		// get data from resolver 
 		this._route.data.subscribe(res => {
 			this.user = res.user;
+			console.log("user", this.user);
 		})
 	}
+
+	slides = [
+		{
+			url: 'https://claremurthy.com/wp-content/uploads/2018/04/6-month-baby-photos-3.jpg'
+		},
+		{
+			url: 'https://claremurthy.com/wp-content/uploads/2018/04/6-month-baby-photos-1.jpg'
+		},
+		{
+			url: 'https://i1.wp.com/ideasfornames.com/wp-content/uploads/2019/09/shutterstock_1458206714.jpg?ssl=1'
+		},
+		{
+			url: 'https://cdn1.evoke.ie/wp-content/uploads/2018/04/shutterstock_97285895-baby-skin-feat-696x503.jpg'
+		}
+	]
 }
