@@ -7,7 +7,6 @@ import { MatModule } from './shared/mat/mat.module';
 import { FormsModule } from '@angular/forms';
 import { JwtModule } from '@auth0/angular-jwt';
 
-
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { NavbarComponent } from './navbar/navbar.component';
@@ -25,6 +24,8 @@ import { MemberDetailComponent } from './members/member-detail/member-detail.com
 import { MemberDetailResolver } from './_resolvers/member-detail.resolver';
 import { MemberListResolver } from './_resolvers/member-list.resolver';
 import { CarouselComponent } from './shared/carousel/carousel.component';
+import { MemberEditComponent } from './members/member-edit/member-edit.component';
+import { MemberEditResolver } from './_resolvers/member-edit.resolver';
 
 export function tokenGetter() {
 	return localStorage.getItem('token');
@@ -44,6 +45,7 @@ export function tokenGetter() {
 		MemberCardComponent,
 		MemberDetailComponent,
 		CarouselComponent,
+		MemberEditComponent,
 	],
 	imports: [
 		BrowserModule,
@@ -64,7 +66,8 @@ export function tokenGetter() {
 	providers: [
 		ErrorInterceptorProvider,
 		MemberDetailResolver,
-		MemberListResolver
+		MemberListResolver,
+		MemberEditResolver
 	],
 	bootstrap: [AppComponent],
 })

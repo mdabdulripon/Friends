@@ -16,9 +16,7 @@
 	</button>
 
 	<mat-menu #accounts="matMenu" xPosition="before">
-		<button mat-menu-item>Button one</button>
-		<button mat-menu-item>Button two</button>
-		<button mat-menu-item>And many more buttons</button>
+		<button mat-menu-item [routerLink]="['/member/edit']">Edit Profile</button>
 		<button mat-menu-item class="icon-text" (click)="logout()">
 			<span class="material-icons">power_settings_new</span>
 			<span class="text">Logout</span>

@@ -14,3 +14,27 @@
 
 
 
+.inline-form {
+    display: flex;
+    justify-content: space-between;
+    &-field {
+        width: 47.5%;
+    }
+} 
+
+
+.card-image {
+    width: 100%;
+    height: auto;
+    margin-bottom: 20px;
+}
+
+
+// Fields 
+textarea {
+    overflow: hidden !important;
+}
+
+.mat-tab-header {
+    margin-bottom: 20px;
+}

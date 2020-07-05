@@ -1,0 +1,71 @@
+<div class="fixed-container">
+    <h1>Edit Profile</h1>
+    <div class="column">
+        <mat-card class="column_item left-column">
+            <img class="card-image" src="{{ user.photoUrl }}" alt="{{user.firstName}}">
+            <div class="column_item--content">
+                <p>Name: {{ user.firstName }}</p>
+                <p>Age: {{ user.age }}</p>
+                <p>Location: {{ user.city }}, {{user.country }}</p>
+                <p>Last active: {{ user.lastActive }}</p>
+                <p>Member since: {{ user.created }}</p>
+            </div>
+        </mat-card>
+
+        <div class="column_item right-column">
+            <mat-tab-group animationDuration="0ms">
+                <mat-tab label="Edit Profile">
+                    <form #editProfileForm (ngSubmit)="updateUser()">
+                        <div class="inline-form">
+                            <mat-form-field appearance="outline" class="inline-form-field">
+                                <mat-label>First Name</mat-label>
+                                <input matInput placeholder="First Name" name="firstName" [(ngModel)]="user.firstName">
+                            </mat-form-field>
+                            <mat-form-field appearance="outline" class="inline-form-field">
+                                <mat-label>Last name</mat-label>
+                                <input matInput placeholder="Last Name" name="lastName" [(ngModel)]="user.lastName">
+                            </mat-form-field>
+                        </div>
+
+                        <div class="inline-form">
+                            <mat-form-field appearance="outline" class="inline-form-field">
+                                <mat-label>City</mat-label>
+                                <input matInput placeholder="City" name="city" [(ngModel)]="user.city">
+                            </mat-form-field>
+                            <mat-form-field appearance="outline" class="inline-form-field">
+                                <mat-label>Country</mat-label>
+                                <input matInput placeholder="Country" name="country" [(ngModel)]="user.country">
+                            </mat-form-field>
+                        </div>
+
+                        <mat-form-field appearance="outline" class="full-width-field">
+                            <mat-label>Description</mat-label>
+                            <textarea matInput matTextareaAutosize placeholder="Description" name="description"
+                                [(ngModel)]="user.introduction"></textarea>
+                        </mat-form-field>
+
+                        <mat-form-field appearance="outline" class="full-width-field">
+                            <mat-label>Looking For</mat-label>
+                            <textarea matInput matTextareaAutosize placeholder="Looking For" name="lookingFor"
+                                [(ngModel)]="user.lookingFor"></textarea>
+                        </mat-form-field>
+
+                        <mat-form-field appearance="outline" class="full-width-field">
+                            <mat-label>Interests</mat-label>
+                            <textarea matInput matTextareaAutosize placeholder="Interests" name="interests"
+                                [(ngModel)]="user.interests"></textarea>
+                        </mat-form-field>
+
+                        <div class="group-btn">
+                            <button mat-raised-button color="primary" type="submit">Save Profile</button>
+                        </div>
+                    </form>
+                </mat-tab>
+
+                <mat-tab label="Edit Photos">
+                    photo goes here......
+                </mat-tab>
+            </mat-tab-group>
+        </div>
+    </div>
+</div>

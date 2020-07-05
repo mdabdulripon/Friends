@@ -1,0 +1,22 @@
+.left-column {
+    flex: 1;
+    padding: 1rem;
+}
+  
+.right-column {
+    flex: 3;
+    padding: 1rem;
+    background-color: #ffffff;
+}
+
+// Can be sapereate style sheet
+
+// .form {
+//     min-width: 150px;
+//     max-width: 500px;
+//     width: 100%;
+// }
+  
+.full-width-field {
+    width: 100%;
+}
