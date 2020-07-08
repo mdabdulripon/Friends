@@ -25,23 +25,14 @@ namespace Friends.API
         }
 
         public IConfiguration Configuration { get; }
-        //public string AllowSpecifiOrigins = "_allowSpecifiOrigins";
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
             // Add DBContext 
             services.AddDbContext<DataContext>(x => x.UseSqlite(Configuration.GetConnectionString("DefaultConnection")));
-            //services.AddCors(x =>
-            //{
-            //    x.AddPolicy(AllowSpecifiOrigins, builder =>
-            //    {
-            //        builder
-            //            .WithOrigins("http://localhost:4200", "http://localhost:4100")
-            //            .WithMethods("GET", "POST", "PUT", "PATCH", "DELETE");
-            //    });
-            //});
             services.AddCors();
+            services.Configure<CloudinarySettings>(Configuration.GetSection("CloudinarySettings"));
             services.AddControllers().AddNewtonsoftJson(opt =>
            {
                opt.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore;
