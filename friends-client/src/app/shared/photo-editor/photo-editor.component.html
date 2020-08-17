@@ -1,0 +1,10 @@
+<div class="user-photo">
+    <div class="user-photo__item" *ngFor="let photo of photos">
+        <img class="user-photo__item__image" src="{{photo.url}}">
+        <div class="group-btn">
+            <button mat-raised-button class="group-btn__rectangle" type="button" (click)="setMainPhoto(photo)"
+                [disabled]="photo.isMain" [ngStyle]="{'color' : photo.isMain ? 'accent' : 'primary'}">Main</button>
+            <button mat-raised-button class="group-btn__rectangle" color="warn" type="button">Delete</button>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,15 @@
+
+.upload-image {
+      &__card {
+            text-align: center;
+            max-width: 500px;
+            margin: 50px auto;
+            &-list {
+                  &__item {
+                        margin: 5px;  
+                        padding: 0;  
+                        list-style: none;  
+                  }
+            }
+      }
+}

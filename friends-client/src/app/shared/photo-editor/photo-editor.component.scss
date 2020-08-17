@@ -1,0 +1,31 @@
+.user-photo {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    &__item {
+        position: relative;
+        &__image {
+            width: 200px;
+            height: 200px;
+        }
+        .group-btn {
+            display: none;
+            transition: all 1s ease;
+        }
+    }
+}
+
+.user-photo__item:hover {
+    .group-btn {
+        display: block;
+        position: absolute;
+        text-align: center;
+        width: 100%; 
+        top: 142px;
+        border-top: 2px solid rebeccapurple;
+        background: #dedede;
+        padding: 10px;
+        opacity: 0.9;
+        transition: all 1s ease;
+    }
+}

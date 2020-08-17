@@ -26,6 +26,8 @@ import { MemberListResolver } from './_resolvers/member-list.resolver';
 import { CarouselComponent } from './shared/carousel/carousel.component';
 import { MemberEditComponent } from './members/member-edit/member-edit.component';
 import { MemberEditResolver } from './_resolvers/member-edit.resolver';
+import { PhotoEditorComponent } from './shared/photo-editor/photo-editor.component';
+import { UploadFilesComponent } from './shared/upload-files/upload-files.component';
 
 export function tokenGetter() {
 	return localStorage.getItem('token');
@@ -46,6 +48,8 @@ export function tokenGetter() {
 		MemberDetailComponent,
 		CarouselComponent,
 		MemberEditComponent,
+		PhotoEditorComponent,
+		UploadFilesComponent
 	],
 	imports: [
 		BrowserModule,
