@@ -5,6 +5,7 @@ using System.Linq;
 using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
+using AutoMapper;
 using Friends.API.Dtos;
 using Friends.API.Models;
 using Friends.API.Repositories;
@@ -21,11 +22,13 @@ namespace Friends.API.Controllers
     {
         private readonly IAuthRepository _repo;
         private readonly IConfiguration _config;
+        private readonly IMapper _mapper;
 
-        public AuthController(IAuthRepository repo, IConfiguration config)
+        public AuthController(IAuthRepository repo, IConfiguration config, IMapper mapper)
         {
             _repo = repo;
             _config = config;
+            _mapper = mapper;
         }
 
         [HttpPost("Register")]
@@ -86,9 +89,12 @@ namespace Friends.API.Controllers
 
             var token = tokenHnadeler.CreateToken(tokenDescriptor);
 
+            var userInfo = _mapper.Map<UserListDto>(user);
+
             return Ok(new
             {
-                token = tokenHnadeler.WriteToken(token)
+                token = tokenHnadeler.WriteToken(token),
+                userInfo
             });
         }
 

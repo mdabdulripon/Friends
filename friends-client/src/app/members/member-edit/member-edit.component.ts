@@ -14,6 +14,7 @@ export class MemberEditComponent implements OnInit {
 
 	@ViewChild('editProfileForm') editForm: NgForm;
 	public user: User;
+	public photoUrl: string;
 
 	// prevent close the window
 	@HostListener('window:beforeunload', ['$event'])
@@ -25,19 +26,18 @@ export class MemberEditComponent implements OnInit {
 
 	constructor(
 		private _userService: UserService,
-		private _authService: AuthService,
+		private _auth: AuthService,
 		private _route: ActivatedRoute) { }
 
 	ngOnInit(): void {
 		this._route.data.subscribe(res => {
 			this.user = res.user;
-			console.log("user ", this.user);
 		});
+		this._auth.currentPhotoUrl$.subscribe(res => this.photoUrl = res);
 	}
 
 	updateUser() {
-		const id = this._authService.decodedToken.nameid;
-		console.log("****", this._authService.decodedToken);
+		const id = this._auth.decodedToken.nameid;
 		this._userService.updateUser(id, this.user).subscribe(res => {
 			console.log("----> res", res);
 			// reset the form

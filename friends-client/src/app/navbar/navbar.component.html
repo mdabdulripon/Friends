@@ -10,9 +10,10 @@
 	</nav>
 	<button class="menu cta" (click)="openNav()" mat-button>Menu</button>
 
-	<button *ngIf="loggedIn()" class="cta" mat-button [matMenuTriggerFor]="accounts">
-		{{ userEmail | titlecase }}
-		<span class="material-icons">keyboard_arrow_down</span>
+	<button *ngIf="loggedIn()" class="cta" mat-button [matMenuTriggerFor]="accounts" class="account-btn">
+		<img class="account-btn__img" src="{{ photoUrl }}" alt="userPhoto">
+		<span class="account-btn__text"> {{ userEmail | titlecase }} </span>
+		<span class="account-btn__icon material-icons">keyboard_arrow_down</span>
 	</button>
 
 	<mat-menu #accounts="matMenu" xPosition="before">

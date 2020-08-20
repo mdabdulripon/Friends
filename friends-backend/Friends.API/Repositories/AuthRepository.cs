@@ -17,7 +17,9 @@ namespace Friends.API.Repositories
         public async Task<User> Login(string email, string password)
         {
             // check if the user is exit 
-            var user = await _context.Users.FirstOrDefaultAsync(x => x.Email == email);
+            var user = await _context.Users
+                .Include(p => p.Photos)
+                .FirstOrDefaultAsync(x => x.Email == email);
 
             if (user == null)
             {

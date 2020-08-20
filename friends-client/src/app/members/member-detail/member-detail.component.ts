@@ -21,7 +21,6 @@ export class MemberDetailComponent implements OnInit {
 		// get data from resolver 
 		this._route.data.subscribe(res => {
 			this.user = res.user;
-			console.log("user", this.user);
 		})
 	}
 
