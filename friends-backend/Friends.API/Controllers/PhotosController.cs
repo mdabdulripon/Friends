@@ -127,5 +127,51 @@ namespace Friends.API.Controllers
             }
             return BadRequest("Could not set photo to main");
         }
+
+
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> DeletePhoto(int userId, int id)
+        {
+            if (userId != int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value))
+            {
+                return Unauthorized();
+            }
+
+            var user = await _repo.GetUser(userId);
+            if (!user.Photos.Any(p => p.Id == id))
+            {
+                return Unauthorized();
+            }
+
+            var requestPhoto = await _repo.GetPhoto(id);
+            if (requestPhoto.IsMain)
+            {
+                return BadRequest("You can not delete the main photo");
+            }
+
+            if (requestPhoto.PublicId != null)
+            {
+                var deletionParams = new DeletionParams(requestPhoto.PublicId);
+                var result = _cloudinary.Destroy(deletionParams);
+
+                if (result.Result == "ok")
+                {
+                    _repo.Delete(requestPhoto);
+                }
+            }
+            else
+            {
+                _repo.Delete(requestPhoto);
+            }
+
+
+            if (await _repo.SaveAll())
+            {
+                return Ok();
+            }
+
+            return BadRequest("Failed to delete the photo");
+        }
+
     }
 }

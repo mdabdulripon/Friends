@@ -27,4 +27,13 @@ export class PhotoEditorComponent {
 				console.log(`An Error happened`, error);
 			})
 	}
+
+	deletePhoto(id: number) {
+		this._user.deletePhoto(this._auth.decodedToken.nameid, id).subscribe(res => {
+			const idx = this.photos.findIndex(p => p.id === id);
+			this.photos.splice(idx, 1);
+		}, error => {
+			console.log(`Error:`, error)
+		});
+	}
 }
