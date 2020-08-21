@@ -4,7 +4,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatModule } from './shared/mat/mat.module';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { JwtModule } from '@auth0/angular-jwt';
 
 import { AppComponent } from './app.component';
@@ -26,6 +26,8 @@ import { MemberListResolver } from './_resolvers/member-list.resolver';
 import { CarouselComponent } from './shared/carousel/carousel.component';
 import { MemberEditComponent } from './members/member-edit/member-edit.component';
 import { MemberEditResolver } from './_resolvers/member-edit.resolver';
+import { PhotoEditorComponent } from './shared/photo-editor/photo-editor.component';
+import { UploadFilesComponent } from './shared/upload-files/upload-files.component';
 
 export function tokenGetter() {
 	return localStorage.getItem('token');
@@ -46,6 +48,8 @@ export function tokenGetter() {
 		MemberDetailComponent,
 		CarouselComponent,
 		MemberEditComponent,
+		PhotoEditorComponent,
+		UploadFilesComponent
 	],
 	imports: [
 		BrowserModule,
@@ -53,6 +57,7 @@ export function tokenGetter() {
 		RouterModule,
 		AppRoutingModule,
 		FormsModule,
+		ReactiveFormsModule,
 		BrowserAnimationsModule,
 		MatModule,
 		JwtModule.forRoot({
