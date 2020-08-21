@@ -4,7 +4,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatModule } from './shared/mat/mat.module';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { JwtModule } from '@auth0/angular-jwt';
 
 import { AppComponent } from './app.component';
@@ -57,6 +57,7 @@ export function tokenGetter() {
 		RouterModule,
 		AppRoutingModule,
 		FormsModule,
+		ReactiveFormsModule,
 		BrowserAnimationsModule,
 		MatModule,
 		JwtModule.forRoot({

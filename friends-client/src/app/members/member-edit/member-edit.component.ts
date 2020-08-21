@@ -45,4 +45,8 @@ export class MemberEditComponent implements OnInit {
 			console.log("----> res", error);
 		});
 	}
+
+	onImageUploaded(event) {
+		this.user.photos.push(event);
+	}
 }

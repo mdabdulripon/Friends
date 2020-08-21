@@ -2,9 +2,9 @@
     <div class="user-photo__item" *ngFor="let photo of photos">
         <img class="user-photo__item__image" src="{{photo.url}}">
         <div class="group-btn">
-            <button mat-raised-button class="group-btn__rectangle" type="button"
+            <button mat-raised-button class="group-btn__rectangle" type="button" [disabled]="photo.isMain"
                 (click)="setMainPhoto(photo)">Main</button>
-            <button mat-raised-button class="group-btn__rectangle" color="warn" type="button"
+            <button mat-raised-button class="group-btn__rectangle" color="warn" type="button" [disabled]="photo.isMain"
                 (click)="deletePhoto(photo.id)">Delete</button>
         </div>
     </div>

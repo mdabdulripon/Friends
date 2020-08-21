@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { UserService } from 'src/app/_services/user.service';
 import { AuthService } from 'src/app/_services/auth.service';
 import { Photo } from 'src/app/_models/Photo';
@@ -24,7 +24,7 @@ export class PhotoEditorComponent {
 				this._auth.currentUser.photoUrl = photo.url;
 				localStorage.setItem('user', JSON.stringify(this._auth.currentUser));
 			}, error => {
-				console.log(`An Error happened`, error);
+				console.log(`Error:`, error);
 			})
 	}
 
@@ -33,7 +33,7 @@ export class PhotoEditorComponent {
 			const idx = this.photos.findIndex(p => p.id === id);
 			this.photos.splice(idx, 1);
 		}, error => {
-			console.log(`Error:`, error)
+			console.log(`Error:`, error);
 		});
 	}
 }

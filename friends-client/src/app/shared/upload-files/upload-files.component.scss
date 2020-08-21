@@ -5,11 +5,15 @@
             max-width: 500px;
             margin: 50px auto;
             &-list {
-                  &__item {
-                        margin: 5px;  
-                        padding: 0;  
-                        list-style: none;  
-                  }
+				display: flex;
+				flex-direction: row;
+				align-items: center;
+				&__item {
+					margin: 5px;  
+					&:last-child {
+						cursor: pointer;
+					}
+				}
             }
       }
 }

@@ -14,11 +14,6 @@
 
         <div class="column_item right-column">
             <mat-tab-group animationDuration="0ms">
-                <mat-tab label="Edit Photos">
-                    <!-- Exiting photo display here...... -->
-                    <app-photo-editor [photos]="user.photos"></app-photo-editor>
-                    <app-upload-files></app-upload-files>
-                </mat-tab>
                 <mat-tab label="Edit Profile">
                     <form #editProfileForm (ngSubmit)="updateUser()">
                         <div class="inline-form">
@@ -65,6 +60,10 @@
                             <button mat-raised-button color="primary" type="submit">Save Profile</button>
                         </div>
                     </form>
+                </mat-tab>
+                <mat-tab label="Edit Photos">
+                    <app-photo-editor [photos]="user.photos"></app-photo-editor>
+                    <app-upload-files (imageUploaded)="onImageUploaded($event)"></app-upload-files>
                 </mat-tab>
             </mat-tab-group>
         </div>

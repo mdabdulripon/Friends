@@ -1,18 +1,23 @@
 <div class="upload-image">
     <mat-card class="upload-image__card">
+        <mat-card-content *ngIf="files.length > 0">
+            <div class="upload-image__card-list" *ngFor="let file of files">
+                <span class="upload-image__card-list__item">{{ file.data.name }}</span>
+                <mat-progress-bar class="upload-image__card-list__item" [value]="file.progress"></mat-progress-bar>
+                <span class="upload-image__card-list__item material-icons" *ngIf="!file.isProgress"
+                    (click)="onDelete(file)">delete</span>
+                <span class="upload-image__card-list__item material-icons" *ngIf="file.isProgress"
+                    (click)="onDelete(file)">done</span>
+            </div>
+        </mat-card-content>
+
         <mat-card-actions>
             <button mat-raised-button color="primary" (click)="onClick()">
                 <mat-icon>file_upload</mat-icon>Upload Images
             </button>
+            <button mat-raised-button color="primary" [disabled]="files.length === 0"
+                (click)="onSubmit()">Submit</button>
         </mat-card-actions>
-        <mat-card-content *ngIf="files.length > 0">
-            <ul class="upload-image__card-list">
-                <li class="upload-image__card-list__item" *ngFor="let file of files">
-                    <mat-progress-bar [value]="file.progress"></mat-progress-bar>
-                    <span id="file-label"></span>
-                </li>
-            </ul>
-        </mat-card-content>
     </mat-card>
 
     <input type="file" #fileUpload id="fileUpload" name="fileUpload" multiple="multiple" accept="image/*"
