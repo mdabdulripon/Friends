@@ -32,6 +32,9 @@ export class MemberEditComponent implements OnInit {
 	ngOnInit(): void {
 		this._route.data.subscribe(res => {
 			this.user = res.user;
+			if (this.user.photoUrl === null) {
+				this.user.photoUrl = '../../../assets/user.png';
+			}
 		});
 		this._auth.currentPhotoUrl$.subscribe(res => this.photoUrl = res);
 	}

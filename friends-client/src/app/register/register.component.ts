@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { AuthService } from '../_services/auth.service';
-import { FormBuilder, FormGroup, Validators, AbstractControl } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
 	selector: 'app-register',
@@ -12,7 +13,7 @@ export class RegisterComponent implements OnInit {
 	public registerForm: FormGroup;
 	model: any = {};
 
-	constructor(private _fb: FormBuilder, private _auth: AuthService) { }
+	constructor(private _fb: FormBuilder, private _router: Router, private _auth: AuthService) { }
 
 	ngOnInit() {
 		this.formBuilder();
@@ -41,14 +42,20 @@ export class RegisterComponent implements OnInit {
 
 	register() {
 		console.log(this.registerForm.value);
-		// console.log(`register`);
-		// this._auth.register(this.model).subscribe(
-		// 	() => {
-		// 		console.log(`Register Successful`);
-		// 	},
-		// 	(error) => {
-		// 		console.log(error);
-		// 	}
-		// );
+		if (this.registerForm.valid) {
+			this.model = Object.assign({}, this.registerForm.value)
+			this._auth.register(this.model).subscribe(
+				() => {
+					console.log(`Register Successful`);
+				},
+				(error) => {
+					console.log(error);
+				}, () => {
+					this._auth.login(this.model).subscribe(() => {
+						this._router.navigate(['members']);
+					});
+				}
+			);
+		}
 	}
 }

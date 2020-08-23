@@ -25,7 +25,7 @@ export class LoginComponent implements OnInit {
 				console.log('error', error);
 			},
 			() => {
-				this._router.navigate(['members'])
+				this._router.navigate(['members']);
 			}
 		);
 	}
