@@ -6,8 +6,8 @@
                 <p>Name: {{ user.firstName }}</p>
                 <p>Age: {{ user.age }}</p>
                 <p>Location: {{ user.city }}, {{user.country }}</p>
-                <p>Last active: {{ user.lastActive }}</p>
-                <p>Member since: {{ user.created }}</p>
+                <p>Last active: {{ user.lastActive | date: 'shortDate' }}</p>
+                <p>Member since: {{ user.created | date: 'shortDate' }}</p>
             </div>
             <div class="group-btn">
                 <button class="group-btn__round" type="button"><span
