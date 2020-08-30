@@ -17,7 +17,7 @@ export class MemberEditResolver implements Resolve<User> {
         return this._userService.getUser(id).pipe(
             catchError(error => {
                 console.log(`Problem retrieving the data`);
-                this._router.navigate(['/members'])
+                this._router.navigate(['/members']);
                 return of(null);
             })
         )

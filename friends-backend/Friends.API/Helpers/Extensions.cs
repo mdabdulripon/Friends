@@ -19,6 +19,10 @@ namespace Friends.API.Helpers
             {
                 age--;
             }
+            else
+            {
+                return 0;
+            }
             return age;
         }
     }
