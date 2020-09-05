@@ -89,8 +89,6 @@ namespace Friends.API
 
             app.UseAuthentication();
 
-            //app.UseHttpsRedirection();
-
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>

@@ -2,12 +2,14 @@
 using System.Collections.Generic;
 using System.Security.Claims;
 using System.Threading.Tasks;
+
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using AutoMapper;
+
 using Friends.API.Dtos;
 using Friends.API.Helpers;
 using Friends.API.Repositories;
-using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Mvc;
 
 namespace Friends.API.Controllers
 {
@@ -27,10 +29,11 @@ namespace Friends.API.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> GetUsers()
+        public async Task<IActionResult> GetUsers([FromQuery] UserParams userParams)
         {
-            var users = await _repo.GetUsers();
+            var users = await _repo.GetUsers(userParams);
             var usersToReturn = _mapper.Map<IEnumerable<UserListDto>>(users);
+            Response.AddPagination(users.CurrentPage, users.PageSize, users.TotalCount, users.TotalPages);
             return Ok(usersToReturn);
         }
 
