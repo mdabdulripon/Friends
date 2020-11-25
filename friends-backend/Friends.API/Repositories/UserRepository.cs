@@ -1,4 +1,5 @@
 ﻿using Friends.API.Data;
+using Friends.API.Helpers;
 using Friends.API.Models;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
@@ -44,10 +45,10 @@ namespace Friends.API.Repositories
             return user;
         }
 
-        public async Task<IEnumerable<User>> GetUsers()
+        public async Task<PagedList<User>> GetUsers(UserParams userParams)
         {
-            var users = await _context.Users.Include(p => p.Photos).ToListAsync();
-            return users;
+            var users = _context.Users.Include(p => p.Photos);
+            return await PagedList<User>.CeateAsync(users, userParams.PageNumber, userParams.PageSize);
         }
 
         public async Task<bool> SaveAll()
