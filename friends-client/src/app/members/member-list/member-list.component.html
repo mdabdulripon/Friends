@@ -4,7 +4,7 @@
             <app-member-card [user]="user"></app-member-card>
         </div>
     </div>
-    <mat-paginator [length]="pagination.totalItems" [pageSize]="pagination.itemPerPage"
+    <mat-paginator [length]="pagination.totalItems" [pageSize]="pagination.itemsPerPage"
         [pageSizeOptions]="[8, 16, 24, 32]" (page)="onPageChange($event)">
     </mat-paginator>
 </div>
